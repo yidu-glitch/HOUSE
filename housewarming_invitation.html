@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New House Celebration · Our New Beginning</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=Noto+Serif+Ethiopic:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              50: '#fdfbf7',
+              100: '#fbf7ed',
+              200: '#f4ebd0',
+              300: '#e7d7a7',
+              400: '#d9bf7c',
+              500: '#cca858',
+              600: '#bd9642',
+              700: '#9e7b33',
+              800: '#7f6229',
+              900: '#685023',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  
+  <style>
+    :root {
+      --bg: #fdfcf7;
+      --text: #2c2623;
+      --accent: #bd9642;
+      --accent-rgb: 189, 150, 66;
+      --card-bg: #ffffff;
+      --border: rgba(189, 150, 66, 0.2);
+      --hero-text: #ffffff;
+      --glow: rgba(189, 150, 66, 0.4);
+      --modal-bg: rgba(253, 252, 247, 0.98);
+    }
+    
+    [data-theme="dark"] {
+      --bg: #12100e;
+      --text: #f3ece4;
+      --accent: #e7d7a7;
+      --accent-rgb: 231, 215, 167;
+      --card-bg: #1c1815;
+      --border: rgba(231, 215, 167, 0.15);
+      --hero-text: #ffffff;
+      --glow: rgba(231, 215, 167, 0.3);
+      --modal-bg: rgba(18, 16, 14, 0.98);
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.5s ease, color 0.5s ease;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    .serif-font { font-family: 'Cormorant Garamond', serif; }
+    .script-font { font-family: 'Great Vibes', cursive; }
+    .ethiopic-font { font-family: 'Noto Serif Ethiopic', 'Cormorant Garamond', serif; }
+
+    /* Navigation */
+    nav {
+      background: rgba(var(--bg), 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.4s ease;
+    }
+    
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--accent);
+    }
+    
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: var(--text);
+      opacity: 0.8;
+      transition: all 0.3s;
+    }
+    
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .hbg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.65);
+      transform: scale(1.05);
+      animation: subtle-zoom 20s infinite ease-in-out alternate;
+    }
+    
+    @keyframes subtle-zoom {
+      from { transform: scale(1.02); }
+      to { transform: scale(1.1); }
+    }
+    
+    .hov {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.6) 100%);
+    }
+    
+    .hc {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      color: var(--hero-text);
+      max-width: 900px;
+      padding: 0 20px;
+    }
+    
+    .heyebrow {
+      font-size: 0.9rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1s ease both;
+    }
+    
+    .hnames {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      animation: fadeInUp 1.2s ease 0.2s both;
+    }
+    
+    .hdv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.4s ease 0.4s both;
+    }
+    
+    .hl {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+    
+    .hd {
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--accent);
+      transform: rotate(45deg);
+      background: transparent;
+    }
+    
+    .hdate {
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      animation: fadeInUp 1.6s ease 0.6s both;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: clamp(10px, 3vw, 30px);
+      margin-top: 1.5rem;
+      animation: fadeInUp 1.8s ease 0.8s both;
+    }
+    
+    .cdu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: clamp(60px, 12vw, 90px);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      padding: 10px 5px;
+    }
+    
+    .cdn {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1;
+    }
+    
+    .cdl {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 4px;
+      opacity: 0.8;
+    }
+    
+    .cdsp {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+    
+    .hscroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: var(--hero-text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+    .hscroll:hover { opacity: 1; }
+    
+    .sln {
+      width: 1px;
+      height: 40px;
+      background: var(--accent);
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .sln::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #ffffff;
+      animation: scroll-down-anim 2s infinite ease-in-out;
+    }
+    
+    @keyframes scroll-down-anim {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(200%); }
+    }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .inv-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      max-width: 1000px;
+      margin: -60px auto 100px;
+      position: relative;
+      z-index: 20;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    
+    .inv-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(var(--accent-rgb), 0.12);
+    }
+    
+    @media (min-width: 768px) {
+      .inv-card { flex-direction: row; }
+      .inv-photo-col { width: 45%; }
+      .inv-body { width: 55%; }
+    }
+    
+    .inv-photo-col {
+      position: relative;
+      min-height: 350px;
+      overflow: hidden;
+    }
+    
+    .inv-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 10s ease;
+    }
+    
+    .inv-card:hover .inv-photo-col img {
+      transform: scale(1.08);
+    }
+    
+    .inv-photo-ov {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%);
+    }
+    
+    .inv-body {
+      padding: clamp(30px, 6vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .inv-tag {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .inv-together {
+      font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+      line-height: 1.8;
+      font-weight: 300;
+      opacity: 0.9;
+    }
+    
+    .inv-dvd {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 1.5rem 0;
+    }
+    
+    .il {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+    
+    .id {
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--accent);
+      transform: rotate(45deg);
+    }
+    
+    .inv-couple {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+    
+    .inv-details {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      opacity: 0.95;
+    }
+    
+    .inv-closing {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      opacity: 0.8;
+    }
+
+    .gg-wrap {
+      position: relative;
+      margin-top: 40px;
+    }
+    
+    .gg {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 20px;
+      scrollbar-width: none;
+    }
+    
+    .gg::-webkit-scrollbar { display: none; }
+    
+    .gi {
+      flex: 0 0 85%;
+      scroll-snap-align: center;
+      border-radius: 16px;
+      overflow: hidden;
+      height: 450px;
+      position: relative;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    
+    @media (min-width: 640px) { .gi { flex: 0 0 45%; } }
+    @media (min-width: 1024px) { .gi { flex: 0 0 30%; } }
+    
+    .gi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gi:hover img { transform: scale(1.05); }
+    
+    .gov {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gi:hover .gov { opacity: 1; }
+    
+    .govic {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 10px 20px;
+      border-radius: 30px;
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(4px);
+    }
+    
+    .gal-arr {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(var(--bg), 0.9);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      font-size: 24px;
+      z-index: 10;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .gal-arr:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    
+    .gal-prev { left: -25px; }
+    .gal-next { right: -25px; }
+    @media (max-width: 768px) { .gal-arr { display: none; } }
+    
+    .swipehint {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-top: 15px;
+      opacity: 0.5;
+      display: block;
+    }
+    @media (min-width: 769px) { .swipehint { display: none; } }
+
+    .tbtn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .tbtn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border: 1px solid transparent;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: var(--modal-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.4s ease;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px; right: 15px;
+      background: none; border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .close-modal:hover { opacity: 1; color: var(--accent); }
+
+    /* Form Styles */
+    .input-field {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+    }
+    .input-field:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    /* Scroll Animation Utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex items-center justify-between">
+    <a href="#" class="nav-logo">The Housewarming</a>
+    <div class="hidden md:flex items-center space-x-8 nav-links">
+      <a href="#welcome">Welcome</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <div class="flex items-center space-x-4">
+      <button class="tbtn" id="themeToggle" title="Toggle Theme">
+        <!-- Sun icon default (for light mode toggle switch) -->
+        <svg id="themeIcon" class="w-5 h-5 fill-none stroke-current stroke-[1.5]" viewBox="0 0 24 24">
+          <path id="moonPath" stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hbg"></div>
+    <div class="hov"></div>
+    <div class="hc">
+      <p class="heyebrow font-light">የመኖሪያ ቤት ምርቃት · Housewarming Celebration</p>
+      <h1 class="hnames ethiopic-font text-3xl sm:text-5xl md:text-6xl font-light leading-snug">
+        አቶ ሄኖክ ቆስጠንጢኖስ <br><span class="text-xl sm:text-3xl opacity-80">&amp;</span><br> ወ/ሮ ፍቅርተ ገብሬ
+      </h1>
+      <div class="hdv">
+        <div class="hl"></div>
+        <div class="hd"></div>
+        <div class="hl"></div>
+      </div>
+      <p class="hdate ethiopic-font">እሁድ ነሐሴ 24 ቀን 2018 ዓ.ም · ከቀኑ 6፡00 ሰዓት</p>
+      <p class="text-xs uppercase tracking-widest opacity-80 -mt-4 mb-6">Sunday, August 30, 2026</p>
+      
+      <!-- Countdown -->
+      <div class="countdown" id="countdown">
+        <div class="cdu"><span class="cdn" id="cd-days">00</span><span class="cdl">Days</span></div>
+        <span class="cdsp">:</span>
+        <div class="cdu"><span class="cdn" id="cd-hours">00</span><span class="cdl">Hours</span></div>
+        <span class="cdsp">:</span>
+        <div class="cdu"><span class="cdn" id="cd-mins">00</span><span class="cdl">Mins</span></div>
+        <span class="cdsp">:</span>
+        <div class="cdu"><span class="cdn" id="cd-secs">00</span><span class="cdl">Secs</span></div>
+      </div>
+      
+      <button class="btn-primary mt-10 sm:hidden inline-block" onclick="openModal()">RSVP Now</button>
+    </div>
+    
+    <div class="hscroll" onclick="document.getElementById('welcome').scrollIntoView()">
+      <span>Scroll</span>
+      <div class="sln"></div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 reveal" id="welcome">
+    <div class="inv-card">
+      <div class="inv-photo-col">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="Our New Home" />
+        <div class="inv-photo-ov"></div>
+      </div>
+      <div class="inv-body">
+        <div>
+          <span class="inv-tag ethiopic-font">የመኖሪያ ቤት ምርቃት ጥሪ</span>
+          
+          <div class="mb-6 p-3 rounded-lg border border-[var(--border)] bg-opacity-30 inline-block w-full max-w-md">
+            <span class="text-xs text-[var(--accent)] uppercase tracking-wider block mb-1">የክብር እንግዳ</span>
+            <p class="ethiopic-font text-lg font-medium">ለ: <span class="border-b border-dashed border-[var(--accent)] px-4 py-1 inline-block min-w-[200px]">.....................................................</span></p>
+          </div>
+
+          <p class="inv-together ethiopic-font text-base sm:text-lg leading-relaxed text-justify sm:text-center my-4 font-normal">
+            የማክበር ሰላምታችንን እያቀረብን በለገጣፎ ከተማ የሰራነውን መኖሪያ ቤታችንን የምናስመርቀው እሁድ ነሐሴ 24 ቀን 2018 ዓ.ም ስለሆነ በዚሁ እለት ከቀኑ 6፡00 ሰዓት ላይ ከቤተሰብዎ ጋር ተገኝተው የደስታችን ተካፋይ እንዲሆኑ በማክበር ጠርተኖታል።
+          </p>
+
+          <div class="inv-dvd">
+            <div class="il"></div>
+            <div class="id"></div>
+            <div class="il"></div>
+          </div>
+
+          <h3 class="inv-couple ethiopic-font text-2xl sm:text-3xl font-medium my-2">
+            አቶ ሄኖክ ቆስጠንጢኖስ <br>&amp;<br> ወ/ሮ ፍቅርተ ገብሬ
+          </h3>
+
+          <div class="inv-details ethiopic-font text-sm sm:text-base leading-relaxed my-4 normal-case">
+            <p class="font-semibold text-[var(--accent)] mb-1">አድራሻ፦</p>
+            <p class="opacity-90">ጣፎ ሴንትራል ሆቴል ፊት ለፊት ባለው አዲሱ መንገድ፣</p>
+            <p class="opacity-90">ዳሌ ሮፓክ ገብርኤል ፊት ለፊት</p>
+            <div class="mt-3">
+              <a href="https://maps.google.com/?q=3VFG+VVX,+Addis+Ababa" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--accent)] hover:underline border border-[var(--accent)] px-4 py-2 rounded-full transition-all">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Google Maps Location (3VFG+VVX)
+              </a>
+            </div>
+          </div>
+
+          <p class="inv-closing ethiopic-font text-base opacity-80 mt-4">"በደስታችን ላይ ተገኝተው ስለሚያደምቁልን አስቀድመን እናመሰግናለን!"</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-20 reveal" id="gallery">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inv-tag">Glimpse Inside</span>
+        <h2 class="serif-font text-4xl font-light mb-4">Our New Home Gallery</h2>
+        <p class="text-sm opacity-80 font-light">A few snapshots of the space before we fill it with your wonderful laughter and good company.</p>
+      </div>
+
+      <div class="gg-wrap">
+        <button class="gal-arr gal-prev" id="galPrev">&#10094;</button>
+        <button class="gal-arr gal-next" id="galNext">&#10095;</button>
+        <div class="gg" id="gallerySlider">
+          <div class="gi">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Exterior View" loading="lazy" />
+            <div class="gov"><div class="govic">Exterior View</div></div>
+          </div>
+          <div class="gi">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Living Room" loading="lazy" />
+            <div class="gov"><div class="govic">Living Room</div></div>
+          </div>
+          <div class="gi">
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen Space" loading="lazy" />
+            <div class="gov"><div class="govic">Kitchen & Dining</div></div>
+          </div>
+          <div class="gi">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Cozy Corner" loading="lazy" />
+            <div class="gov"><div class="govic">Cozy Corner</div></div>
+          </div>
+        </div>
+      </div>
+      <span class="swipehint">Swipe to explore more</span>
+    </section>
+  </main>
+
+  <!-- RSVP Modal -->
+  <div class="modal-overlay" id="rsvpModal">
+    <div class="modal-content text-center">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <span class="inv-tag mb-2">We'd Love To See You</span>
+      <h2 class="serif-font text-3xl mb-6">RSVP</h2>
+      <form id="rsvpForm" onsubmit="handleRSVP(event)">
+        <input type="text" class="input-field" placeholder="First & Last Name" required />
+        <input type="email" class="input-field" placeholder="Email Address" required />
+        <select class="input-field" required>
+          <option value="" disabled selected>Will you be attending?</option>
+          <option value="yes">Joyfully Accept</option>
+          <option value="no">Regretfully Decline</option>
+        </select>
+        <select class="input-field">
+          <option value="0">Number of Guests (including yourself)</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <textarea class="input-field" rows="3" placeholder="Any dietary restrictions or message for the couple?"></textarea>
+        <button type="submit" class="btn-primary w-full mt-2">Send RSVP</button>
+      </form>
+      
+      <!-- Success Message (Hidden by default) -->
+      <div id="rsvpSuccess" class="hidden py-8">
+        <h3 class="serif-font text-2xl mb-2 text-[var(--accent)]">Thank You!</h3>
+        <p class="font-light text-sm opacity-80">We have received your RSVP. We can't wait to celebrate with you!</p>
+        <button class="btn-primary mt-6" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-12 border-t border-[var(--border)] text-center text-xs tracking-widest uppercase opacity-70 ethiopic-font">
+    <p>© 2018 ዓ.ም (2026) አቶ ሄኖክ ቆስጠንጢኖስ እና ወ/ሮ ፍቅርተ ገብሬ · የመኖሪያ ቤት ምርቃት</p>
+  </footer>
+
+  <script>
+    // Theme Switcher Logic
+    const htmlEl = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    const icons = {
+      moon: '<path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />',
+      sun: '<path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />'
+    };
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = htmlEl.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', newTheme);
+      
+      // Swap Icon
+      themeIcon.innerHTML = newTheme === 'dark' ? icons.sun : icons.moon;
+    });
+
+    // Countdown Timer to Aug 30, 2026 16:00:00
+    const eventDate = new Date('August 30, 2026 16:00:00').getTime();
+    
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+      
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
+      } else {
+        document.getElementById('countdown').innerHTML = '<span class="serif-font text-3xl text-[var(--accent)]">The Celebration Has Begun!</span>';
+      }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Gallery Slider Navigation
+    const slider = document.getElementById('gallerySlider');
+    document.getElementById('galNext').addEventListener('click', () => {
+      slider.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+    document.getElementById('galPrev').addEventListener('click', () => {
+      slider.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+
+    // Modal Logic
+    const rsvpModal = document.getElementById('rsvpModal');
+    const rsvpForm = document.getElementById('rsvpForm');
+    const rsvpSuccess = document.getElementById('rsvpSuccess');
+
+    function openModal() {
+      rsvpModal.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeModal() {
+      rsvpModal.classList.remove('active');
+      document.body.style.overflow = '';
+      // Reset form after closing animation finishes
+      setTimeout(() => {
+        rsvpForm.reset();
+        rsvpForm.style.display = 'block';
+        rsvpSuccess.classList.add('hidden');
+      }, 400);
+    }
+
+    // Close modal if clicked outside of content
+    rsvpModal.addEventListener('click', (e) => {
+      if (e.target === rsvpModal) closeModal();
+    });
+
+    function handleRSVP(e) {
+      e.preventDefault();
+      // Simulate form submission
+      rsvpForm.style.display = 'none';
+      rsvpSuccess.classList.remove('hidden');
+    }
+
+    // Scroll Reveal Animation (Intersection Observer)
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target); // Reveal only once
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15 // Trigger when 15% of element is visible
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
